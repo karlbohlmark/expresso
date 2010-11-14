@@ -660,11 +660,12 @@ function runFile(file, fn) {
  */
 
 function clearCache(file) {
-    var keys = Object.keys(module.moduleCache);
+    var cache = require.cache;
+    var keys = Object.keys(cache);
     for (var i = 0, len = keys.length; i < len; ++i) {
         var key = keys[i];
         if (key.indexOf(file) === key.length - file.length) {
-            delete module.moduleCache[key];
+            delete cache[key];
         }
     }
 }
